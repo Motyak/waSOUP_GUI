@@ -47,19 +47,19 @@ namespace waSOUP_GUI
                 // upload every 64KB chunk
                 int nbOfChunks = data.Length / 65536 + 1;
                 int indexStartChunk = 0;
-                byte[] chunk = { };
+                byte[] chunk = new byte[65536];
                 for (int i = 1; i < nbOfChunks; ++i)
                 {
-                    Array.Copy(data, indexStartChunk, chunk, indexStartChunk, 65536);
+                    Array.Copy(data, indexStartChunk, chunk, 0, 65536);
                     this.collection.upload(t, chunk);
                     indexStartChunk += 65536;
                 }
-                Array.Copy(data, indexStartChunk, chunk, indexStartChunk, data.Length);
+                Array.Copy(data, indexStartChunk, chunk, 0, data.Length % 65536);
                 return this.collection.finishUpload(t, chunk);
             }
         }
 
-        public void remove(generatedIce.Track track) //lever une exception en cas d'err
+        public void remove(generatedIce.Track track)
         {
             this.collection.remove(track);
         }

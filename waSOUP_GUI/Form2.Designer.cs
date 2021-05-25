@@ -33,6 +33,9 @@
             this.lblArtist = new System.Windows.Forms.Label();
             this.txtArtist = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnParcourir = new System.Windows.Forms.Button();
+            this.lblFile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -77,11 +80,36 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // btnParcourir
+            // 
+            this.btnParcourir.Location = new System.Drawing.Point(444, 115);
+            this.btnParcourir.Name = "btnParcourir";
+            this.btnParcourir.Size = new System.Drawing.Size(99, 23);
+            this.btnParcourir.TabIndex = 5;
+            this.btnParcourir.Text = "Parcourir...";
+            this.btnParcourir.UseVisualStyleBackColor = true;
+            this.btnParcourir.Click += new System.EventHandler(this.btnParcourir_Click);
+            // 
+            // lblFile
+            // 
+            this.lblFile.AutoEllipsis = true;
+            this.lblFile.Location = new System.Drawing.Point(441, 69);
+            this.lblFile.Name = "lblFile";
+            this.lblFile.Size = new System.Drawing.Size(126, 13);
+            this.lblFile.TabIndex = 6;
+            this.lblFile.Text = "Aucun fichier sélectionné";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.Controls.Add(this.lblFile);
+            this.Controls.Add(this.btnParcourir);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lblArtist);
             this.Controls.Add(this.txtArtist);
@@ -102,5 +130,8 @@
         private System.Windows.Forms.Label lblArtist;
         private System.Windows.Forms.TextBox txtArtist;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btnParcourir;
+        private System.Windows.Forms.Label lblFile;
     }
 }

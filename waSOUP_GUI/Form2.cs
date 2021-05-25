@@ -15,6 +15,7 @@ namespace waSOUP_GUI
         private bool _confirmed = false;
         private String _title = "";
         private String _artist = "";
+        private byte[] _data = null;
 
         public bool Confirmed
         {
@@ -31,6 +32,11 @@ namespace waSOUP_GUI
         {
             get { return this._artist; }
             set { this._artist = value; }
+        }
+
+        public byte[] Data
+        {
+            get { return this._data; }
         }
 
         public void updateFields(String title, String artist)
@@ -59,6 +65,17 @@ namespace waSOUP_GUI
         {
             // reset 'confirmed' flag
             this._confirmed = false;
+
+            // reset file to upload
+            this._data = null;
+        }
+
+        private void btnParcourir_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog.ShowDialog();
+            String filename = this.openFileDialog.FileName;
+            this._data = System.IO.File.ReadAllBytes(filename);
+            this.lblFile.Text = System.IO.Path.GetFileName(filename);
         }
     }
 }

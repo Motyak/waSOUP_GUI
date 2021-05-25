@@ -46,6 +46,12 @@ namespace waSOUP_GUI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Console.WriteLine("ADD");
+
+            this.form2.ShowDialog();
+            if (this.form2.Confirmed)
+            {
+                
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -79,7 +85,7 @@ namespace waSOUP_GUI
                     selectedTrack.title = this.form2.Title;
                     selectedTrack.artist = this.form2.Artist;
                     this.updateList();
-                    this.backend.update(selectedTrack, null);
+                    this.backend.update(selectedTrack, this.form2.Data);
                 }
             }
 
