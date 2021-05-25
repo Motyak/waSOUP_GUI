@@ -47,10 +47,15 @@ namespace waSOUP_GUI
         {
             Console.WriteLine("ADD");
 
+            this.form2.updateFields("", "");
             this.form2.ShowDialog();
             if (this.form2.Confirmed)
             {
-                
+                generatedIce.Track newTrack = new generatedIce.Track(
+                        -1, this.form2.Title, this.form2.Artist, -1, "");
+                newTrack = this.backend.update(newTrack, this.form2.Data);
+                this.tracks.Add(newTrack);
+                this.updateList();
             }
         }
 
