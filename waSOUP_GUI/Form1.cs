@@ -41,6 +41,10 @@ namespace waSOUP_GUI
         private void listTracks_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Console.WriteLine(this.listTracks.SelectedItems[0].Text);
+
+            var selectedRow = this.listTracks.SelectedIndices[0];
+            var selectedTrack = this.tracks.ElementAt(selectedRow);
+            this.backend.play(selectedTrack);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

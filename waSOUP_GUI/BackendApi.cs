@@ -10,6 +10,7 @@ namespace waSOUP_GUI
     {
         private Ice.Communicator iceCommunicator;
         private generatedIce.CollectionPrx collection;
+        private generatedIce.StreamingPrx streaming;
 
         public BackendApi()
         {
@@ -20,6 +21,11 @@ namespace waSOUP_GUI
             this.collection = generatedIce.CollectionPrxHelper.checkedCast(this.iceCommunicator.stringToProxy("Collection:default -p 10000"));
             if (this.collection == null)
                 throw new Exception("collection: Invalid proxy");
+
+            /* Recuperation du proxy pour le streaming */
+            this.streaming = generatedIce.StreamingPrxHelper.checkedCast(this.iceCommunicator.stringToProxy("Streaming:default -p 10001"));
+            if (this.streaming == null)
+                throw new Exception("streaming: Invalid proxy");
         }
 
         public void destroyIceCommunicator()
@@ -62,6 +68,11 @@ namespace waSOUP_GUI
         public void remove(generatedIce.Track track)
         {
             this.collection.remove(track);
+        }
+
+        public void play(generatedIce.Track track)
+        {
+            this.streaming.play(track);
         }
     }
 }

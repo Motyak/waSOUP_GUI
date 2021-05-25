@@ -12,22 +12,12 @@ public class Streaming implements generatedIce.Streaming
         uk.co.caprica.vlcj.factory.MediaPlayerFactory mediaPlayerFactory = new uk.co.caprica.vlcj.factory.MediaPlayerFactory();
         this.mediaPlayer = mediaPlayerFactory.mediaPlayers().newMediaPlayer();
         this.options = Streaming.formatRtspStream(host, port, endpoint);
-
-        // TEST
-        this.mediaPlayer.media().play(
-            "rayman.mp3",
-            this.options,
-            ":no-sout-rtp-sap",
-            ":no-sout-standard-sap",
-            ":sout-all",
-            ":sout-keep"
-        );
     }
 
     public void play(generatedIce.Track track, com.zeroc.Ice.Current current)
     {
         this.mediaPlayer.media().play(
-            track.md5, //attention la racine part de bin/ !!
+            "../collection/tracks/" + track.md5 + ".mp3",
             this.options,
             ":no-sout-rtp-sap",
             ":no-sout-standard-sap",
