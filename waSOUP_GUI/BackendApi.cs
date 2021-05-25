@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace waSOUP_GUI
+{
+    class BackendApi
+    {
+        private Ice.Communicator iceCommunicator;
+        private generatedIce.CollectionPrx collection;
+
+        public BackendApi()
+        {
+            // Initialisation du communicateur Ice
+            this.iceCommunicator = Ice.Util.initialize();
+
+            /* Recuperation du proxy pour la collection */
+            this.collection = generatedIce.CollectionPrxHelper.checkedCast(this.iceCommunicator.stringToProxy("Collection:default -p 10000"));
+            if (this.collection == null)
+                throw new Exception("collection: Invalid proxy");
+        }
+
+        public void destroyIceCommunicator()
+        {
+            this.iceCommunicator.destroy();
+        }
+
+        public List<generatedIce.Track> getAllTracks()
+        {
+            return this.collection.getAllTracks().ToList();
+        }
+
+        public generatedIce.Track update(generatedIce.Track track, byte[] data)
+        {
+            // convert Track to generatedIce.Track
+            generatedIce.Track t = new generatedIce.Track(track.id, track.title, track.artist, track.duration, track.md5);
+
+            if (data == null || data.Length == 0)
+            {
+                this.collection.updateIfExisting(t);
+                return track;
+            }
+            else //if there is something to upload
+            {
+                // upload every 64KB chunk
+                int nbOfChunks = data.Length / 65536 + 1;
+                int indexStartChunk = 0;
+                byte[] chunk = { };
+                for (int i = 1; i < nbOfChunks; ++i)
+                {
+                    Array.Copy(data, indexStartChunk, chunk, indexStartChunk, 65536);
+                    this.collection.upload(t, chunk);
+                    indexStartChunk += 65536;
+                }
+                Array.Copy(data, indexStartChunk, chunk, indexStartChunk, data.Length);
+                return this.collection.finishUpload(t, chunk);
+            }
+        }
+
+        public void remove(generatedIce.Track track) //lever une exception en cas d'err
+        {
+            this.collection.remove(track);
+        }
+    }
+}

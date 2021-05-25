@@ -12,15 +12,26 @@ namespace waSOUP_GUI
 {
     public partial class Form1 : Form
     {
+        private BackendApi backend;
+        private List<generatedIce.Track> tracks;
         private bool pause = true;
+
+        private void updateList()
+        {
+            this.listTracks.Items.Clear();
+            foreach (generatedIce.Track t in this.tracks)
+                this.listTracks.Items.Add(new ListViewItem(t.title));
+        }
 
         public Form1()
         {
             InitializeComponent();
 
-            this.listTracks.Items.AddRange(new ListViewItem[]{
-                new ListViewItem("test", 0)
-            });
+            this.backend = new BackendApi();
+
+            // récupérer toutes les tracks et les ajouter à la liste
+            this.tracks = this.backend.getAllTracks();
+            this.updateList();
         }
 
         private void listTracks_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -39,6 +50,15 @@ namespace waSOUP_GUI
                 Console.WriteLine("REMOVE ");
             else
                 Console.WriteLine("REMOVE " + this.listTracks.SelectedItems[0].Text);
+
+            var selectedRows = this.listTracks.SelectedIndices;
+            var trackToDelete = this.tracks.ElementAt(selectedRows[0]);
+            if (selectedRows.Count > 0)
+            {
+                this.backend.remove(trackToDelete);
+                this.tracks.Remove(trackToDelete);
+                this.updateList();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

@@ -1,0 +1,52 @@
+[
+    {
+        "name": "ice",
+        "ver": "3.7.2",
+        "link": "https://search.maven.org/remotecontent?filepath=com/zeroc/ice/3.7.2/ice-3.7.2.jar"
+    },
+    {
+        "name": "sqlite-jdbc",
+        "ver": "3.34.0",
+        "link": "https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0.jar"
+    },
+    {
+        "name": "jaxb-api",
+        "ver": "2.4.0",
+        "link": "https://search.maven.org/remotecontent?filepath=javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.jar"
+    },
+    {
+        "name": "mp3-spi",
+        "ver": "1.9.5.4",
+        "link": "https://search.maven.org/remotecontent?filepath=com/googlecode/soundlibs/mp3spi/1.9.5.4/mp3spi-1.9.5.4.jar"
+    },
+    {
+        "name": "tritonus-share",
+        "ver": "0.3.7.4",
+        "link": "https://search.maven.org/remotecontent?filepath=com/googlecode/soundlibs/tritonus-share/0.3.7.4/tritonus-share-0.3.7.4.jar"
+    },
+    {
+        "name": "jlayer",
+        "ver": "1.0.1.4",
+        "link": "https://search.maven.org/remotecontent?filepath=com/googlecode/soundlibs/jlayer/1.0.1.4/jlayer-1.0.1.4.jar"
+    },
+    {
+        "name": "vlcj",
+        "ver": "4.7.1",
+        "link": "https://search.maven.org/remotecontent?filepath=uk/co/caprica/vlcj/4.7.1/vlcj-4.7.1.jar"
+    },
+    {
+        "name": "vlcj-natives",
+        "ver": "4.1.0",
+        "link": "https://search.maven.org/remotecontent?filepath=uk/co/caprica/vlcj-natives/4.1.0/vlcj-natives-4.1.0.jar"
+    },
+    {
+        "name": "jna",
+        "ver": "5.2.0",
+        "link": "https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.2.0/jna-5.2.0.jar"
+    },
+    {
+        "name": "jna-platform",
+        "ver": "5.2.0",
+        "link": "https://repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.2.0/jna-platform-5.2.0.jar"
+    }
+]

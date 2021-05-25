@@ -1,0 +1,5 @@
+bin
+lib
+src/generatedIce
+collection/tracks.db
+collection/tracks/*.mp3
