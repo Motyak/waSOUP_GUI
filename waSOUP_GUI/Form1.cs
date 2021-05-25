@@ -12,6 +12,8 @@ namespace waSOUP_GUI
 {
     public partial class Form1 : Form
     {
+        private Form2 form2;
+
         private BackendApi backend;
         private List<generatedIce.Track> tracks;
         private bool pause = true;
@@ -26,6 +28,8 @@ namespace waSOUP_GUI
         public Form1()
         {
             InitializeComponent();
+
+            this.form2 = new Form2();
 
             this.backend = new BackendApi();
 
@@ -52,17 +56,34 @@ namespace waSOUP_GUI
                 Console.WriteLine("REMOVE " + this.listTracks.SelectedItems[0].Text);
 
             var selectedRows = this.listTracks.SelectedIndices;
-            var trackToDelete = this.tracks.ElementAt(selectedRows[0]);
             if (selectedRows.Count > 0)
             {
-                this.backend.remove(trackToDelete);
-                this.tracks.Remove(trackToDelete);
+                var selectedTrack = this.tracks.ElementAt(selectedRows[0]);
+                this.backend.remove(selectedTrack);
+                this.tracks.Remove(selectedTrack);
                 this.updateList();
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            var selectedRows = this.listTracks.SelectedIndices;
+            if (selectedRows.Count > 0)
+            {
+                var selectedTrack = this.tracks.ElementAt(selectedRows[0]);
+                this.form2.updateFields(selectedTrack.title, selectedTrack.artist);
+                this.form2.ShowDialog();
+
+                if(this.form2.Confirmed)
+                {
+                    selectedTrack.title = this.form2.Title;
+                    selectedTrack.artist = this.form2.Artist;
+                    this.updateList();
+                    this.backend.update(selectedTrack, null);
+                }
+            }
+
+
             if (this.listTracks.SelectedItems.Count == 0)
                 Console.WriteLine("EDIT ");
             else

@@ -83,10 +83,10 @@ public class Collection implements generatedIce.Collection
             statement.setQueryTimeout(10);
             String reqSelect = "select id from tracks where id=" + track.id;
             String reqInsert = "insert into tracks(title,artist,duration,md5) values('" 
-                    + track.title + "','" + track.artist + "','" + duration 
-                    + "','" + hash + "')";
+                    + track.title + "','" + track.artist + "'," + duration 
+                    + ",'" + hash + "')";
             String reqUpdate = "update tracks set title='" + track.title + "',artist='" 
-                    + track.artist + ",duration=" + duration + "',md5='" + hash
+                    + track.artist + "',duration=" + duration + ",md5='" + hash
                     + "' where id=" + track.id;
             String reqLastId = "select id from tracks order by id desc limit 1";
             String reqNbTracksForMd5 = "select id from tracks where md5='" + track.md5 + "' limit 1";
@@ -152,8 +152,11 @@ public class Collection implements generatedIce.Collection
             statement.setQueryTimeout(10);
             String reqSelect = "select id from tracks where id=" + track.id;
             String reqUpdate = "update tracks set title='" + track.title + "',artist='" 
-                    + track.artist + ",duration=" + track.duration + "',md5='" + track.md5
+                    + track.artist + "',duration=" + track.duration + ",md5='" + track.md5
                     + "' where id=" + track.id;
+
+            //debug
+            System.out.println(reqUpdate);
 
             boolean existing = statement.executeQuery(reqSelect).next();
             if(existing)
