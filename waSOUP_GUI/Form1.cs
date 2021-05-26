@@ -150,5 +150,16 @@ namespace waSOUP_GUI
             Console.WriteLine("stop");
             this.backend.stop();
         }
+
+        private void listTracks_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Afficher les infos de la track
+            var selectedRow = this.listTracks.SelectedIndices[0];
+            var selectedTrack = this.tracks.ElementAt(selectedRow);
+            this.lblTitle.Text = selectedTrack.title;
+            this.lblArtist.Text = selectedTrack.artist;
+            this.lblDurationMin.Text = Convert.ToString(selectedTrack.duration / 60);
+            this.lblDurationSec.Text = Convert.ToString(selectedTrack.duration % 60);
+        }
     }
 }

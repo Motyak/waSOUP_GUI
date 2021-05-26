@@ -37,6 +37,15 @@
             this.btnBackward = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblDurationMin = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblDurationSec = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblArtist = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listTracks
@@ -46,6 +55,7 @@
             this.listTracks.Size = new System.Drawing.Size(324, 505);
             this.listTracks.TabIndex = 0;
             this.listTracks.UseCompatibleStateImageBehavior = false;
+            this.listTracks.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listTracks_MouseClick);
             this.listTracks.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listTracks_MouseDoubleClick);
             // 
             // btnAdd
@@ -130,11 +140,99 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(777, 265);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Titre :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(777, 333);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Artiste :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(777, 396);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Durée :";
+            // 
+            // lblDurationMin
+            // 
+            this.lblDurationMin.AutoSize = true;
+            this.lblDurationMin.Location = new System.Drawing.Point(825, 396);
+            this.lblDurationMin.Name = "lblDurationMin";
+            this.lblDurationMin.Size = new System.Drawing.Size(19, 13);
+            this.lblDurationMin.TabIndex = 12;
+            this.lblDurationMin.Text = "00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(840, 396);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "mn";
+            // 
+            // lblDurationSec
+            // 
+            this.lblDurationSec.AutoSize = true;
+            this.lblDurationSec.Location = new System.Drawing.Point(856, 396);
+            this.lblDurationSec.Name = "lblDurationSec";
+            this.lblDurationSec.Size = new System.Drawing.Size(19, 13);
+            this.lblDurationSec.TabIndex = 14;
+            this.lblDurationSec.Text = "00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(872, 396);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(12, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "s";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(822, 265);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 13);
+            this.lblTitle.TabIndex = 16;
+            // 
+            // lblArtist
+            // 
+            this.lblArtist.AutoSize = true;
+            this.lblArtist.Location = new System.Drawing.Point(820, 333);
+            this.lblArtist.Name = "lblArtist";
+            this.lblArtist.Size = new System.Drawing.Size(0, 13);
+            this.lblArtist.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1057, 681);
+            this.Controls.Add(this.lblArtist);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblDurationSec);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblDurationMin);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnForward);
             this.Controls.Add(this.btnBackward);
@@ -162,6 +260,15 @@
         private System.Windows.Forms.Button btnBackward;
         private System.Windows.Forms.Button btnForward;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDurationMin;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDurationSec;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblArtist;
     }
 }
 
