@@ -137,7 +137,19 @@ namespace waSOUP_GUI
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("text changed");
+            Console.WriteLine(this.txtSearch.Text);
+
+            if (this.txtSearch.Text.Equals(""))
+                this.updateList();
+
+            var filtered = new List<string>();
+            foreach (ListViewItem item in this.listTracks.Items)
+                if(item.Text.StartsWith(this.txtSearch.Text))
+                    filtered.Add(item.Text);
+
+            this.listTracks.Items.Clear();
+            foreach (string str in filtered)
+                this.listTracks.Items.Add(new ListViewItem(str));
         }
 
         private void btnBackward_Click(object sender, EventArgs e)
