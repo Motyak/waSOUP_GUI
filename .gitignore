@@ -1,4 +1,10 @@
+packages
 .vs
 waSOUP_GUI/bin
 waSOUP_GUI/obj
-packages
+waSOUP/bin
+waSOUP/collection/tracks
+waSOUP/collection/tracks.db
+waSOUP/lib
+
+

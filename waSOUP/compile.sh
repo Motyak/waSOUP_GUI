@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create directories
-mkdir -p bin lib
+mkdir -p bin lib collection/tracks
 
 # Create database
 $(cd collection && [ ! -f tracks.db ] && sqlite3 tracks.db "$(< createDatabase.sql)")
