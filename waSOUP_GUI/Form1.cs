@@ -15,6 +15,7 @@ namespace waSOUP_GUI
         private Form2 form2;
 
         private BackendApi backend;
+        private LibVLCSharp.Shared.MediaPlayer mediaPlayer;
         private List<generatedIce.Track> tracks;
         private bool pause = true;
 
@@ -32,6 +33,12 @@ namespace waSOUP_GUI
             this.form2 = new Form2();
 
             this.backend = new BackendApi();
+
+            LibVLCSharp.Shared.Core.Initialize();
+            LibVLCSharp.Shared.LibVLC vlc = new LibVLCSharp.Shared.LibVLC();
+            this.mediaPlayer = new LibVLCSharp.Shared.MediaPlayer(vlc);
+            LibVLCSharp.Shared.Media media = new LibVLCSharp.Shared.Media(vlc, new Uri("rtsp://127.0.0.1:5555/waSOUP"));
+            this.mediaPlayer.Play(media);
 
             // récupérer toutes les tracks et les ajouter à la liste
             this.tracks = this.backend.getAllTracks();
