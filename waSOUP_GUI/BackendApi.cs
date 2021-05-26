@@ -74,5 +74,20 @@ namespace waSOUP_GUI
         {
             this.streaming.play(track);
         }
+
+        public void togglePause()
+        {
+            this.streaming.togglePause();
+        }
+
+        public void skipTime(int delta)
+        {
+            this.streaming.skipTime(delta);
+        }
+
+        public void stop()
+        {
+            this.streaming.stop();
+        }
     }
 }

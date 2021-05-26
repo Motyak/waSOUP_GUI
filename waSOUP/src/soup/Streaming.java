@@ -6,6 +6,7 @@ public class Streaming implements generatedIce.Streaming
     private String options;
 
     private uk.co.caprica.vlcj.player.base.MediaPlayer mediaPlayer;
+    private boolean pause = false;
 
     public Streaming(String host, int port, String endpoint)
     {
@@ -16,6 +17,8 @@ public class Streaming implements generatedIce.Streaming
 
     public void play(generatedIce.Track track, com.zeroc.Ice.Current current)
     {
+        System.out.println("play");
+
         this.mediaPlayer.media().play(
             "../collection/tracks/" + track.md5 + ".mp3",
             this.options,
@@ -28,16 +31,23 @@ public class Streaming implements generatedIce.Streaming
 
     public void togglePause(com.zeroc.Ice.Current current)
     {
-        this.mediaPlayer.controls().pause();
+        System.out.println("togglePause");
+        if(this.pause)
+            this.mediaPlayer.controls().play();
+        else
+            this.mediaPlayer.controls().pause();
+        this.pause = !this.pause;
     }
 
     public void skipTime(int delta, com.zeroc.Ice.Current current)
     {
+        System.out.println("skipTime");
         this.mediaPlayer.controls().skipTime(delta);
     }
 
     public void stop(com.zeroc.Ice.Current current)
     {
+        System.out.println("stop");
         this.mediaPlayer.controls().stop();
     }
 

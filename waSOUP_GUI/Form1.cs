@@ -45,6 +45,12 @@ namespace waSOUP_GUI
             var selectedRow = this.listTracks.SelectedIndices[0];
             var selectedTrack = this.tracks.ElementAt(selectedRow);
             this.backend.play(selectedTrack);
+
+            this.btnPlayPause.Enabled = true;
+            this.btnPlayPause.Text = "PAUSE";
+            this.btnStop.Enabled = true;
+            this.btnBackward.Enabled = true;
+            this.btnForward.Enabled = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -107,16 +113,42 @@ namespace waSOUP_GUI
 
         private void btnPlayPause_Click(object sender, EventArgs e)
         {
-            this.pause = !this.pause;
             if (this.pause)
+            {
                 Console.WriteLine("PLAY");
+                this.btnPlayPause.Text = "PLAY";
+            }
             else
+            {
                 Console.WriteLine("PAUSE");
+                this.btnPlayPause.Text = "PAUSE";
+            }
+
+            this.pause = !this.pause;
+            this.backend.togglePause();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             Console.WriteLine("text changed");
+        }
+
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("backward");
+            this.backend.skipTime(-10000);
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("frontward");
+            this.backend.skipTime(10000);
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("stop");
+            this.backend.stop();
         }
     }
 }

@@ -155,9 +155,6 @@ public class Collection implements generatedIce.Collection
                     + track.artist + "',duration=" + track.duration + ",md5='" + track.md5
                     + "' where id=" + track.id;
 
-            //debug
-            System.out.println(reqUpdate);
-
             boolean existing = statement.executeQuery(reqSelect).next();
             if(existing)
                 statement.executeUpdate(reqUpdate);
